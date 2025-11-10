@@ -67,7 +67,7 @@ export default function SeniorsPage() {
   const fetchSeniors = async () => {
     try {
       const response = await usersAPI.getSeniors();
-      const seniorData = response.data;
+      const seniorData = response.data.data || response.data;
       setSeniors(seniorData);
       setFilteredSeniors(seniorData);
       

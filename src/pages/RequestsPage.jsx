@@ -70,7 +70,7 @@ export default function RequestsPage() {
   const fetchRequests = async () => {
     try {
       const response = await requestsAPI.getAllRequests();
-      const requestData = response.data;
+      const requestData = response.data.data || response.data;
       setRequests(requestData);
       setFilteredRequests(requestData);
       

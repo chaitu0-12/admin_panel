@@ -68,7 +68,7 @@ export default function DonatorsPage() {
   const fetchDonators = async () => {
     try {
       const response = await usersAPI.getDonators();
-      const donationData = response.data;
+      const donationData = response.data.data || response.data;
       setDonators(donationData);
       setFilteredDonators(donationData);
       

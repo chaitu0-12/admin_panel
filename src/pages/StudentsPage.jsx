@@ -69,7 +69,7 @@ export default function StudentsPage() {
   const fetchStudents = async () => {
     try {
       const response = await usersAPI.getStudents();
-      const studentData = response.data;
+      const studentData = response.data.data || response.data;
       setStudents(studentData);
       setFilteredStudents(studentData);
       
