@@ -4,6 +4,8 @@
 
 A beautiful, responsive admin panel built with React, Material-UI, and Vite for managing students, seniors, donators, and monitoring app analytics.
 
+> **⚡ STATIC DEMO VERSION**: This version uses mock data and does not require a backend API. Perfect for demonstrations and testing the UI/UX.
+
 ---
 
 ## ✨ Features
@@ -27,11 +29,11 @@ A beautiful, responsive admin panel built with React, Material-UI, and Vite for 
 - Donation trends with visual charts
 - Engagement metrics (active users, session duration, bounce rate)
 
-### 🔒 Security
-- JWT-based authentication
-- Role-based access control
-- Protected routes
-- Secure admin login
+### 🔒 Authentication (Demo Mode)
+- **No backend required** - uses mock authentication
+- **Any credentials accepted** for login demo
+- Auto-login feature for quick access
+- All data is stored locally in browser
 
 ### 🎨 Modern UI/UX
 - **Glassmorphism design** with gradient accents
@@ -48,7 +50,7 @@ A beautiful, responsive admin panel built with React, Material-UI, and Vite for 
 ### Prerequisites
 - Node.js (v16 or higher)
 - npm or yarn
-- MySQL database (already configured in main app)
+- **No database required** (uses mock data)
 
 ### Installation
 
