@@ -38,13 +38,14 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
+      // Static demo - accept any credentials
       const response = await authAPI.login(formData);
       localStorage.setItem('adminToken', response.data.token);
       localStorage.setItem('adminUser', JSON.stringify(response.data.user));
-      toast.success('Login successful!');
+      toast.success('Login successful! (Demo Mode)');
       navigate('/');
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Login failed. Please check your credentials.');
+      toast.error('Login failed. Please try again.');
     } finally {
       setLoading(false);
     }

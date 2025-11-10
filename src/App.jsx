@@ -26,10 +26,15 @@ const LoadingFallback = () => (
   </Box>
 );
 
-// Protected Route Component
+// Protected Route Component - Modified for static demo
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem('adminToken');
-  return token ? children : <Navigate to="/login" replace />;
+  // For static demo, auto-login if no token
+  if (!token) {
+    localStorage.setItem('adminToken', 'demo-token');
+    localStorage.setItem('adminUser', JSON.stringify({ name: 'Demo User', email: 'demo@example.com' }));
+  }
+  return children;
 };
 
 function App() {

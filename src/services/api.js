@@ -1,88 +1,174 @@
-import axios from 'axios';
+import {
+  mockStudents,
+  mockSeniors,
+  mockDonators,
+  mockRequests,
+  mockDashboardStats,
+  mockAnalytics,
+} from './mockData';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+// Helper function to simulate API delay
+const delay = (ms = 300) => new Promise(resolve => setTimeout(resolve, ms));
 
-// Create axios instance with default config
-const api = axios.create({
-  baseURL: API_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
-
-// Add auth token to requests
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('adminToken');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
-
-// Handle response errors
-api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response?.status === 401) {
-      localStorage.removeItem('adminToken');
-      window.location.href = '/login';
-    }
-    return Promise.reject(error);
-  }
-);
+// Helper to create mock response
+const mockResponse = (data) => ({ data });
 
 // ==================== AUTH APIs ====================
 export const authAPI = {
-  login: (credentials) => api.post('/admin/login', credentials),
+  login: async (credentials) => {
+    await delay();
+    // Accept any credentials for static demo
+    const mockUser = {
+      id: 1,
+      name: 'Admin User',
+      email: credentials.email,
+      role: 'admin',
+    };
+    return mockResponse({
+      token: 'mock-token-' + Date.now(),
+      user: mockUser,
+    });
+  },
   logout: () => {
     localStorage.removeItem('adminToken');
     localStorage.removeItem('adminUser');
   },
-  verifyToken: () => api.get('/admin/verify'),
+  verifyToken: async () => {
+    await delay();
+    return mockResponse({ valid: true });
+  },
 };
 
 // ==================== USERS APIs ====================
 export const usersAPI = {
   // Students
-  getStudents: (params) => api.get('/admin/students', { params }),
-  getStudentById: (id) => api.get(`/admin/students/${id}`),
-  updateStudent: (id, data) => api.patch(`/admin/students/${id}`, data),
-  deleteStudent: (id) => api.delete(`/admin/students/${id}`),
+  getStudents: async (params) => {
+    await delay();
+    return mockResponse({
+      data: mockStudents,
+      total: mockStudents.length,
+      page: params?.page || 1,
+      limit: params?.limit || 10,
+    });
+  },
+  getStudentById: async (id) => {
+    await delay();
+    const student = mockStudents.find(s => s.id === parseInt(id));
+    return mockResponse(student);
+  },
+  updateStudent: async (id, data) => {
+    await delay();
+    const student = mockStudents.find(s => s.id === parseInt(id));
+    return mockResponse({ ...student, ...data });
+  },
+  deleteStudent: async (id) => {
+    await delay();
+    return mockResponse({ success: true, id });
+  },
   
   // Seniors
-  getSeniors: (params) => api.get('/admin/seniors', { params }),
-  getSeniorById: (id) => api.get(`/admin/seniors/${id}`),
-  updateSenior: (id, data) => api.patch(`/admin/seniors/${id}`, data),
-  deleteSenior: (id) => api.delete(`/admin/seniors/${id}`),
+  getSeniors: async (params) => {
+    await delay();
+    return mockResponse({
+      data: mockSeniors,
+      total: mockSeniors.length,
+      page: params?.page || 1,
+      limit: params?.limit || 10,
+    });
+  },
+  getSeniorById: async (id) => {
+    await delay();
+    const senior = mockSeniors.find(s => s.id === parseInt(id));
+    return mockResponse(senior);
+  },
+  updateSenior: async (id, data) => {
+    await delay();
+    const senior = mockSeniors.find(s => s.id === parseInt(id));
+    return mockResponse({ ...senior, ...data });
+  },
+  deleteSenior: async (id) => {
+    await delay();
+    return mockResponse({ success: true, id });
+  },
   
   // Donators
-  getDonators: (params) => api.get('/admin/donations', { params }),
+  getDonators: async (params) => {
+    await delay();
+    return mockResponse({
+      data: mockDonators,
+      total: mockDonators.length,
+      page: params?.page || 1,
+      limit: params?.limit || 10,
+    });
+  },
 };
 
 // ==================== ANALYTICS APIs ====================
 export const analyticsAPI = {
-  getDashboardStats: () => api.get('/admin/analytics/dashboard'),
-  getUserActivity: (params) => api.get('/admin/analytics/activity', { params }),
-  getDailyVisits: (params) => api.get('/admin/analytics/visits', { params }),
-  getEngagementMetrics: () => api.get('/admin/analytics/engagement'),
-  getDonationStats: () => api.get('/admin/analytics/donations'),
+  getDashboardStats: async () => {
+    await delay();
+    return mockResponse(mockDashboardStats);
+  },
+  getUserActivity: async (params) => {
+    await delay();
+    return mockResponse(mockAnalytics.userActivity);
+  },
+  getDailyVisits: async (params) => {
+    await delay();
+    return mockResponse(mockAnalytics.dailyVisits);
+  },
+  getEngagementMetrics: async () => {
+    await delay();
+    return mockResponse(mockAnalytics.engagementMetrics);
+  },
+  getDonationStats: async () => {
+    await delay();
+    return mockResponse(mockAnalytics.donationStats);
+  },
 };
 
 // ==================== DONATIONS APIs ====================
 export const donationsAPI = {
-  getAllDonations: (params) => api.get('/admin/donations', { params }),
-  getDonationById: (id) => api.get(`/admin/donations/${id}`),
-  updateDonationStatus: (id, status) => api.patch(`/admin/donations/${id}`, { status }),
+  getAllDonations: async (params) => {
+    await delay();
+    return mockResponse({
+      data: mockDonators,
+      total: mockDonators.length,
+      page: params?.page || 1,
+      limit: params?.limit || 10,
+    });
+  },
+  getDonationById: async (id) => {
+    await delay();
+    const donation = mockDonators.find(d => d.id === parseInt(id));
+    return mockResponse(donation);
+  },
+  updateDonationStatus: async (id, status) => {
+    await delay();
+    const donation = mockDonators.find(d => d.id === parseInt(id));
+    return mockResponse({ ...donation, status });
+  },
 };
 
 // ==================== REQUESTS APIs ====================
 export const requestsAPI = {
-  getAllRequests: (params) => api.get('/admin/requests', { params }),
-  getRequestById: (id) => api.get(`/admin/requests/${id}`),
-  updateRequestStatus: (id, status) => api.patch(`/admin/requests/${id}`, { status }),
+  getAllRequests: async (params) => {
+    await delay();
+    return mockResponse({
+      data: mockRequests,
+      total: mockRequests.length,
+      page: params?.page || 1,
+      limit: params?.limit || 10,
+    });
+  },
+  getRequestById: async (id) => {
+    await delay();
+    const request = mockRequests.find(r => r.id === parseInt(id));
+    return mockResponse(request);
+  },
+  updateRequestStatus: async (id, status) => {
+    await delay();
+    const request = mockRequests.find(r => r.id === parseInt(id));
+    return mockResponse({ ...request, status });
+  },
 };
-
-export default api;
