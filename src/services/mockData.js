@@ -137,14 +137,37 @@ export const mockRequests = [
 export const mockDashboardStats = {
   totalStudents: 156,
   totalSeniors: 89,
-  totalDonations: 450000,
+  totalDonators: 45,
+  totalRequests: 432,
   activeRequests: 23,
-  monthlyGrowth: {
-    students: 12,
-    seniors: 8,
-    donations: 15,
-    requests: 5,
+  completedRequests: 387,
+  totalDonations: 450000,
+  trends: {
+    students: { direction: 'up', value: '+12%' },
+    seniors: { direction: 'up', value: '+8%' },
+    donators: { direction: 'up', value: '+15%' },
+    requests: { direction: 'down', value: '-5%' },
   },
+  activityData: [
+    { name: 'Mon', students: 45, seniors: 28, requests: 12 },
+    { name: 'Tue', students: 52, seniors: 32, requests: 15 },
+    { name: 'Wed', students: 48, seniors: 35, requests: 18 },
+    { name: 'Thu', students: 61, seniors: 38, requests: 22 },
+    { name: 'Fri', students: 55, seniors: 42, requests: 19 },
+    { name: 'Sat', students: 38, seniors: 25, requests: 8 },
+    { name: 'Sun', students: 32, seniors: 20, requests: 6 },
+  ],
+  userDistribution: [
+    { name: 'Students', value: 156 },
+    { name: 'Seniors', value: 89 },
+    { name: 'Donators', value: 45 },
+  ],
+  requestsByStatus: [
+    { status: 'Pending', count: 23 },
+    { status: 'In Progress', count: 78 },
+    { status: 'Completed', count: 387 },
+    { status: 'Cancelled', count: 22 },
+  ],
 };
 
 // Mock analytics data
