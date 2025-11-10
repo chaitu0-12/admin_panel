@@ -260,7 +260,7 @@ export default function StudentsPage() {
                             </TableCell>
                             <TableCell>
                               <Typography variant="caption">
-                                {format(new Date(student.createdAt), 'MMM dd, yyyy')}
+                                {student.createdAt ? format(new Date(student.createdAt), 'MMM dd, yyyy') : 'N/A'}
                               </Typography>
                             </TableCell>
                             <TableCell align="right">
@@ -349,7 +349,7 @@ export default function StudentsPage() {
               <Grid item xs={12} sm={6}>
                 <Typography variant="caption" color="text.secondary">Joined Date</Typography>
                 <Typography variant="body1" gutterBottom>
-                  {format(new Date(selectedStudent.createdAt), 'MMMM dd, yyyy')}
+                  {selectedStudent.createdAt ? format(new Date(selectedStudent.createdAt), 'MMMM dd, yyyy') : 'N/A'}
                 </Typography>
               </Grid>
               

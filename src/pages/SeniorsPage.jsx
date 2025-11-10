@@ -239,7 +239,7 @@ export default function SeniorsPage() {
                             </TableCell>
                             <TableCell>
                               <Typography variant="caption">
-                                {format(new Date(senior.createdAt), 'MMM dd, yyyy')}
+                                {senior.createdAt ? format(new Date(senior.createdAt), 'MMM dd, yyyy') : 'N/A'}
                               </Typography>
                             </TableCell>
                             <TableCell align="right">
@@ -354,7 +354,7 @@ export default function SeniorsPage() {
               <Grid item xs={12}>
                 <Typography variant="caption" color="text.secondary">Joined Date</Typography>
                 <Typography variant="body1" gutterBottom>
-                  {format(new Date(selectedSenior.createdAt), 'MMMM dd, yyyy')}
+                  {selectedSenior.createdAt ? format(new Date(selectedSenior.createdAt), 'MMMM dd, yyyy') : 'N/A'}
                 </Typography>
               </Grid>
             </Grid>

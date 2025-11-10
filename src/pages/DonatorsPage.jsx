@@ -276,7 +276,7 @@ export default function DonatorsPage() {
                             </TableCell>
                             <TableCell>
                               <Typography variant="caption">
-                                {format(new Date(donation.created_at), 'MMM dd, yyyy')}
+                                {donation.createdAt ? format(new Date(donation.createdAt), 'MMM dd, yyyy') : 'N/A'}
                               </Typography>
                             </TableCell>
                             <TableCell align="right">
@@ -385,7 +385,7 @@ export default function DonatorsPage() {
               <Grid item xs={12}>
                 <Typography variant="caption" color="text.secondary">Donation Date</Typography>
                 <Typography variant="body1" gutterBottom>
-                  {format(new Date(selectedDonation.created_at), 'MMMM dd, yyyy HH:mm')}
+                  {selectedDonation.createdAt ? format(new Date(selectedDonation.createdAt), 'MMMM dd, yyyy HH:mm') : 'N/A'}
                 </Typography>
               </Grid>
             </Grid>

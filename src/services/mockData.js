@@ -11,7 +11,7 @@ export const mockStudents = [
     course: 'B.Tech Computer Science',
     year: '3rd Year',
     status: 'active',
-    registeredAt: '2024-01-15T10:30:00Z',
+    createdAt: '2024-01-15T10:30:00Z',
     completedTasks: 12,
     score: 95,
     avatar: null,
@@ -25,7 +25,7 @@ export const mockStudents = [
     course: 'B.A. Economics',
     year: '2nd Year',
     status: 'active',
-    registeredAt: '2024-01-20T14:20:00Z',
+    createdAt: '2024-01-20T14:20:00Z',
     completedTasks: 8,
     score: 88,
     avatar: null,
@@ -39,7 +39,7 @@ export const mockStudents = [
     course: 'B.E. Mechanical',
     year: '4th Year',
     status: 'inactive',
-    registeredAt: '2024-02-10T09:15:00Z',
+    createdAt: '2024-02-10T09:15:00Z',
     completedTasks: 0,
     score: 0,
     avatar: null,
@@ -59,7 +59,7 @@ export const mockSeniors = [
     age: 68,
     address: 'Sector 15, Noida',
     status: 'active',
-    registeredAt: '2024-01-10T11:00:00Z',
+    createdAt: '2024-01-10T11:00:00Z',
     avatar: null,
   },
   {
@@ -73,7 +73,7 @@ export const mockSeniors = [
     age: 72,
     address: 'Connaught Place, Delhi',
     status: 'active',
-    registeredAt: '2024-01-25T16:45:00Z',
+    createdAt: '2024-01-25T16:45:00Z',
     avatar: null,
   },
   {
@@ -87,7 +87,7 @@ export const mockSeniors = [
     age: 65,
     address: 'Dwarka, Delhi',
     status: 'active',
-    registeredAt: '2024-02-05T10:30:00Z',
+    createdAt: '2024-02-05T10:30:00Z',
     avatar: null,
   },
 ];
@@ -103,7 +103,7 @@ export const mockDonators = [
     amount: 50000,
     paymentMethod: 'upi',
     status: 'completed',
-    created_at: '2024-03-01T10:00:00Z',
+    createdAt: '2024-03-01T10:00:00Z',
   },
   {
     id: 2,
@@ -114,7 +114,7 @@ export const mockDonators = [
     amount: 10000,
     paymentMethod: 'card',
     status: 'completed',
-    created_at: '2024-03-05T14:30:00Z',
+    createdAt: '2024-03-05T14:30:00Z',
   },
   {
     id: 3,
@@ -125,7 +125,7 @@ export const mockDonators = [
     amount: 100000,
     paymentMethod: 'bank',
     status: 'pending',
-    created_at: '2024-03-10T09:00:00Z',
+    createdAt: '2024-03-10T09:00:00Z',
   },
 ];
 
